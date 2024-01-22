@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
    private float distanceBetweenCenters = 2.5f;
 
    private bool isGameOver;
-   private float spawnRate = 0.5f; // Los targets aparecerán cada 2 segundos
+   private float spawnRate = 1f; // Los targets aparecerán cada 2 segundos
 
    private Vector3 randomPos;
   public List<Vector3> targetPositionsInScene;
