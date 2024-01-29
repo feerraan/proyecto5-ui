@@ -5,12 +5,18 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI pointsText;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private GameObject gameOverPanel;
 
     public void UpdateScoreText(int score)
     {
-         pointsText.text = $"Points: {score}";
+        scoreText.text = $"Score: {score}";
+    }
+
+    public void UpdateTimeText(int time)
+    {
+        timeText.text = $"Time: {time}";
     }
 
     public void ShowGameOverPanel()

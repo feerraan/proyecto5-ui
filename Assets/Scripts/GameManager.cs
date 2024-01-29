@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
 
      private int score;
 
+     private int time;
+     private int timeMax = 60; // medido en segundos
+
      private UIManager uiManager;
 
      public List<Vector3> targetPositionsInScene;
@@ -29,13 +32,16 @@ public class GameManager : MonoBehaviour
      private void Start()
      {
           uiManager = FindObjectOfType<UIManager>();
-
           uiManager.HideGameOverPanel();
 
           score = 0;
           UpdateScore(0);
 
+          time = timeMax;
+          uiManager.UpdateTimeText(time);
+
           StartCoroutine(SpawnRandomTarget());
+          StartCoroutine(Timer());
      }
 
      private Vector3 RandomSpawnPosition()
@@ -74,16 +80,37 @@ public class GameManager : MonoBehaviour
           } 
      }
 
-     public void UpdateScore(int newPoints)
+     private IEnumerator Timer()
      {
-          score += newPoints;
-          uiManager.UpdateScoreText(score);
-          
-          if (score < 0) 
+          while (!isGameOver)
+          {
+               yield return new WaitForSeconds(1);
+               
+               if (isGameOver)
+               {
+                    break;
+               }
+
+               UpdateTime();
+          }
+     }
+
+     private void UpdateTime()
+     {
+          time--;
+          uiManager.UpdateTimeText(time);
+
+          if (time <= 0) 
           {
                isGameOver = true;
                uiManager.ShowGameOverPanel();
           }
+     }
+
+     public void UpdateScore(int newPoints)
+     {
+          score += newPoints;
+          uiManager.UpdateScoreText(score);
      }
 
      public bool IsGameOver()
