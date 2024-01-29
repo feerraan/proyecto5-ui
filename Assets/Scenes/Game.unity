@@ -736,6 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsText: {fileID: 1970041542}
+  gameOverPanel: {fileID: 855925154}
 --- !u!1 &1829648827
 GameObject:
   m_ObjectHideFlags: 0

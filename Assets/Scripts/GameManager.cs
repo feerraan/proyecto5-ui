@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
      {
           uiManager = FindObjectOfType<UIManager>();
 
+          uiManager.HideGameOverPanel();
+
           score = 0;
           UpdateScore(0);
 
@@ -80,6 +82,7 @@ public class GameManager : MonoBehaviour
           if (score < 0) 
           {
                isGameOver = true;
+               uiManager.ShowGameOverPanel();
           }
      }
 
