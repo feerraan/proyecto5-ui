@@ -5,6 +5,7 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     [SerializeField] private float lifeTime = 2f;
+    [SerializeField] private int points;
 
     private GameManager gameManager;
 
@@ -17,6 +18,7 @@ public class Target : MonoBehaviour
 
     private void OnMouseDown()
     {
+        gameManager.UpdateScore(points);
         Destroy(gameObject);
     }
 

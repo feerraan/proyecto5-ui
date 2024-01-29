@@ -7,8 +7,9 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI pointsText;
 
-    private void Start()
+    public void UpdateScoreText(int score)
     {
-        pointsText.text = "Points: 0";
+         pointsText.text = $"Points: {score}";
     }
+
 }
