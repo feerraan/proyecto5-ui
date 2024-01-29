@@ -1007,6 +1007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1970041542}
   timeText: {fileID: 379401895}
+  gameOverScoreText: {fileID: 382445379}
   gameOverPanel: {fileID: 855925154}
 --- !u!1 &1829648827
 GameObject:
