@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
           if (time <= 0) 
           {
                isGameOver = true;
-               uiManager.ShowGameOverPanel();
+               uiManager.ShowGameOverPanel(score);
           }
      }
 
