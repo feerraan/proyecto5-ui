@@ -51,6 +51,11 @@ public class GameManager : MonoBehaviour
           {
                yield return new WaitForSeconds(spawnRate);
 
+               if (isGameOver)
+               {
+                    break;
+               }
+
                int randomPrefabsIndex = Random.Range(0, targetPrefabs.Length);
                
                randomPos = RandomSpawnPosition();
@@ -71,5 +76,15 @@ public class GameManager : MonoBehaviour
      {
           score += newPoints;
           uiManager.UpdateScoreText(score);
+          
+          if (score < 0) 
+          {
+               isGameOver = true;
+          }
+     }
+
+     public bool IsGameOver()
+     {
+          return isGameOver;
      }
 }
