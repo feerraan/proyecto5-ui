@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI gameOverScoreText;
     [SerializeField] private GameObject gameOverPanel;
+    
+    [SerializeField] private GameObject mainMenuPanel;
 
     public void UpdateScoreText(int score)
     {
@@ -30,6 +32,16 @@ public class UIManager : MonoBehaviour
     public void HideGameOverPanel()
     {
         gameOverPanel.SetActive(false);
+    }
+    
+    public void ShowMainMenuPanel()
+    {
+        mainMenuPanel.SetActive(true);
+    }
+
+    public void HideMainMenuPanel()
+    {
+        mainMenuPanel.SetActive(false);
     }
 
 }

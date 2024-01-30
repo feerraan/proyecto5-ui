@@ -14,6 +14,7 @@ public class Target : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
 
+        
         Destroy(gameObject, lifeTime);
     }
 

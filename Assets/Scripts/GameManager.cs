@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
      private int score;
 
      private int time;
-     private int timeMax = 60; // medido en segundos
+     private int timeMax = 12; // medido en segundos
 
      private UIManager uiManager;
 
@@ -33,12 +34,24 @@ public class GameManager : MonoBehaviour
      {
           uiManager = FindObjectOfType<UIManager>();
           uiManager.HideGameOverPanel();
+          uiManager.ShowMainMenuPanel();
+     }
+
+     // difficulty = 1 (Easy)
+     // difficulty = 2 (Medium)
+     // difficulty = 3 (Hard)
+     public void StartGame(int difficulty)
+     {
+          uiManager.HideMainMenuPanel();
 
           score = 0;
           UpdateScore(0);
 
-          time = timeMax;
+          time = timeMax / difficulty;
           uiManager.UpdateTimeText(time);
+
+          // spawnRate = spawnRate / difficulty;
+          spawnRate /= difficulty;
 
           StartCoroutine(SpawnRandomTarget());
           StartCoroutine(Timer());
@@ -116,5 +129,10 @@ public class GameManager : MonoBehaviour
      public bool IsGameOver()
      {
           return isGameOver;
+     }
+
+     public void RestartGameScene()
+     {
+          SceneManager.LoadScene(SceneManager.GetActiveScene().name);
      }
 }
