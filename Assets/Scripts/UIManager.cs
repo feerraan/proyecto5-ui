@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +14,20 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     
     [SerializeField] private GameObject mainMenuPanel;
+
+    [SerializeField] private Button easyButton;
+    [SerializeField] private Button mediumButton;
+    [SerializeField] private Button hardButton;
+
+    private GameManager gameManagerScript;
+
+    private void Start()
+    {
+        gameManagerScript = FindObjectOfType<GameManager>();
+        easyButton.onClick.AddListener(() => { gameManagerScript.StartGame(1); });
+        mediumButton.onClick.AddListener(() => { gameManagerScript.StartGame(2); });
+        hardButton.onClick.AddListener(() => { gameManagerScript.StartGame(3); });
+    }
 
     public void UpdateScoreText(int score)
     {
