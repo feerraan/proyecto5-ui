@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI timeText;
+    [SerializeField] private Image timeImage;
 
     [SerializeField] private TextMeshProUGUI gameOverScoreText;
     [SerializeField] private GameObject gameOverPanel;
@@ -20,14 +21,20 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button mediumButton;
     [SerializeField] private Button hardButton;
 
+    [SerializeField] private Slider volumeSlider;
+
     private GameManager gameManagerScript;
 
     private void Start()
     {
         gameManagerScript = FindObjectOfType<GameManager>();
+        
+        //volumeSlider.onValueChanged.AddListener(gameManagerScript.SetBackgroundMusicVolume);
+        
         easyButton.onClick.AddListener(() => { gameManagerScript.StartGame(1); });
         mediumButton.onClick.AddListener(() => { gameManagerScript.StartGame(2); });
         hardButton.onClick.AddListener(() => { gameManagerScript.StartGame(3); });
+        timeImage.fillAmount = 1;
     }
 
     public void UpdateScoreText(int score)
@@ -38,6 +45,18 @@ public class UIManager : MonoBehaviour
     public void UpdateTimeText(int time)
     {
         timeText.text = $"Time: {time}";
+    }
+
+    public void UpdateTimeImage(int time)
+    {
+        float fillAmount = time / (float)GameManager.TIME_MAX;
+        timeImage.fillAmount = fillAmount;
+    }
+
+    public void UpdateTimeUI(int time)
+    {
+        UpdateTimeImage(time);
+        UpdateTimeText(time);
     }
 
     public void ShowGameOverPanel(int score)

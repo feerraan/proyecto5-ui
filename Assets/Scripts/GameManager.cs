@@ -19,11 +19,13 @@ public class GameManager : MonoBehaviour
      private int score;
 
      private int time;
-     private int timeMax = 12; // medido en segundos
+     public const int TIME_MAX = 12; // medido en segundos
 
      private UIManager uiManager;
 
      public List<Vector3> targetPositionsInScene;
+
+     [SerializeField] private AudioSource backgroundMusicAudioSource;
 
      private void Awake()
      {
@@ -48,8 +50,8 @@ public class GameManager : MonoBehaviour
           score = 0;
           UpdateScore(0);
 
-          time = timeMax / difficulty;
-          uiManager.UpdateTimeText(time);
+          time = TIME_MAX / difficulty;
+          uiManager.UpdateTimeUI(time);
 
           // spawnRate = spawnRate / difficulty;
           spawnRate /= difficulty;
@@ -112,7 +114,7 @@ public class GameManager : MonoBehaviour
      private void UpdateTime()
      {
           time--;
-          uiManager.UpdateTimeText(time);
+          uiManager.UpdateTimeUI(time);
 
           if (time <= 0) 
           {
@@ -137,8 +139,8 @@ public class GameManager : MonoBehaviour
           SceneManager.LoadScene(SceneManager.GetActiveScene().name);
      }
 
-     public void FuncionDelBoton()
+     public void SetBackgroundMusicVolume(float volume)
      {
-          Debug.Log("Botón Pulsado");
+          backgroundMusicAudioSource.volume = volume;
      }
 }
