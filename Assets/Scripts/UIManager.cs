@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -11,6 +12,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     
     [SerializeField] private GameObject mainMenuPanel;
+    
+    [SerializeField] private GameObject optionsPanel;
+    [SerializeField] private Button backButton;
 
     [SerializeField] private Button easyButton;
     [SerializeField] private Button mediumButton;
@@ -56,5 +60,14 @@ public class UIManager : MonoBehaviour
     {
         mainMenuPanel.SetActive(false);
     }
+    
+    public void ShowOptionsPanel()
+    {
+        optionsPanel.SetActive(true);
+    }
 
+    public void HideOptionsPanel()
+    {
+        optionsPanel.SetActive(false);
+    }
 }

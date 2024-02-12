@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
      public void StartGame(int difficulty)
      {
           uiManager.HideMainMenuPanel();
+          uiManager.HideOptionsPanel();
 
           score = 0;
           UpdateScore(0);
@@ -134,5 +135,10 @@ public class GameManager : MonoBehaviour
      public void RestartGameScene()
      {
           SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+     }
+
+     public void FuncionDelBoton()
+     {
+          Debug.Log("Botón Pulsado");
      }
 }
